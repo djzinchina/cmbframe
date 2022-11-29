@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>cmbframe.wavelet API documentation</title>
+<meta name="description" content="CMBframe wavelet transformation module provides functions and utilities
+to performs needlet transformation of data on a sphere. The module provides
+…" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>cmbframe.wavelet</code></h1>
+</header>
+<section id="section-intro">
+<p>CMBframe wavelet transformation module provides functions and utilities
+to performs needlet transformation of data on a sphere. The module provides
+setup of cosine and gaussian needlets bands and are used in conjunction with
+healpix sherical harmonic transformation of the data on the sphere.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="cmbframe.wavelet.alm2wavelet"><code class="name flex">
+<span>def <span class="ident">alm2wavelet</span></span>(<span>alm_in, bands, nodegrade=False, wavelet_nside=None, w_nside_min=None, w_nside_max=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performs wavelet transform from input spherical harmonic coefficient (alm) of a map.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>alm_in</code></strong> :&ensp;<code>numpy array</code></dt>
+<dd>A 1D numpy array of alm for a map obtained from healpy.
+Does not support multicomponent maps. For polarization
+input should be either <span><span class="MathJax_Preview">a^E_{\ell m}</span><script type="math/tex">a^E_{\ell m}</script></span> or <span><span class="MathJax_Preview">a^B_{\ell m}</span><script type="math/tex">a^B_{\ell m}</script></span>.</dd>
+<dt><strong><code>bands</code></strong> :&ensp;<code>numpy ndarray</code></dt>
+<dd>A 2D numpy array of shape ``(lmax+1, nbands)'' conatining
+needlet bands</dd>
+<dt><strong><code>nodegrade</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Sets if all wavelet scale maps have the same nside.
+If True then you can set the common nside for all scales
+with wavelet_nside. If nside not specified, the common
+nside for all scales is set by: math.ceil(math.log2(lmax)),
+with lmax determined from needlet bands.</dd>
+<dt><strong><code>wavelet_nside</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Nside of wavelet maps at all bands. Default is None.</dd>
+<dt><strong><code>w_nside_min</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Minimum nside for any wavelet scale maps. Default is None.</dd>
+<dt><strong><code>w_nside_max</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Maximum nside for any wavelet scale maps. Default is None.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>When nside is not set by user the nside of each wavelet scale map
+is 2^n such that <code>2^n &gt;= lmax_band</code> (n is integer). The <code>lmax_band</code> is
+obtained by calling <code><a title="cmbframe.wavelet.get_lmax_band" href="#cmbframe.wavelet.get_lmax_band">get_lmax_band()</a></code>. </p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>A list of healpix maps is returned. There will be nband healpix
+maps as 1D numpy arrays. If all maps are not set to have the same
+nside, do not convert the whole list of maps to a numpy ndarray.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.cosine_bands"><code class="name flex">
+<span>def <span class="ident">cosine_bands</span></span>(<span>band_centers=[0, 30, 60, 100, 150, 300, 700, 1200, 2000])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>cosine_bands sets up cosine needlet bands for needlet transformations on a sphere.</p>
+<p>You can visualize these bands using <code>plot_needlet_bands</code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>band_centers</code></strong> :&ensp;<code>list</code> of <code>int</code>, optional</dt>
+<dd>A list of ell values where we want the cosine bands to peak.
+Default is [0, 30, 60, 100, 150, 300, 700, 1200, 2000]</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>The first needlet band is starts from a peak at the set value of <code>band_centers[0]</code>.
+All ells before <code>band_centers[0]</code> is included in the first needlet band with unit weights.
+The last needlet should peak at lmax of your computation. So you would like to set
+<code>band_centers[-1]</code> to <code>lmax</code> in most calculations.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>numpy ndarray </code></dt>
+<dd>A 2D numpy array of shape = <code>(np.max(band_centers)+1, len(band_centers))</code>.
+<code>np.max(band_centers)</code> is <code>lmax</code> of the needlets and len(band_centers) is no. of needlet bands.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.gaussian_bands"><code class="name flex">
+<span>def <span class="ident">gaussian_bands</span></span>(<span>fwhms=[300.0, 150.0, 90.0, 60.0, 40.0, 20.0, 10.0], lmax_band=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>gaussian_bands sets up gaussian needlet bands for needlet transformations on a sphere.</p>
+<p>You can visualize these bands using <code>plot_needlet_bands</code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>fwhms</code></strong> :&ensp;<code>list</code> of <code>floats</code>, optional</dt>
+<dd>A list of fwhm values in arcmin of the different gaussian needlet map resolutions.
+Defaults is [300., 150., 90., 60., 40., 20., 10.]</dd>
+<dt><strong><code>lmax_band</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>It is recommended to set this to the lmax using in the computation.
+Default is <code>int(360.* 60./ np.min(fwhms))</code></dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>The number of gaussian needlet bands produced is 1 more than the number of fwhms
+set. The final band is there to pick up the residual weight after needlet weights for
+all the gaussian bands.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>numpy ndarray</code></dt>
+<dd>A 2D numpy array of shape = <code>(lmax_band+1, len(fwhms) + 1)</code>.
+<code>nbands=len(fwhms)+1</code> is no. of needlet bands.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.get_lmax_band"><code class="name flex">
+<span>def <span class="ident">get_lmax_band</span></span>(<span>band)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the highest ell value where a needlet band is 5% of its peak.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>band</code></strong> :&ensp;<code>numpy array</code></dt>
+<dd>A 1D numpy array containing the needlet band. Typically <code>needlets[:,i]</code>
+slice for the ith needlet band.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>This function is meant to find the maximum lmax contributing to a needlet
+band. This is set to 5% to deal with the long tail of the gaussian needlets.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>An integer value for the nonzero lmax of the needlet band.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.map2wavelet"><code class="name flex">
+<span>def <span class="ident">map2wavelet</span></span>(<span>map_in, bands, wavelet_nside=None, nodegrade=False, w_nside_min=None, w_nside_max=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performs wavelet transform from input healpix map. This
+is a map level wrapper for alm2wavelet function.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>map_in</code></strong> :&ensp;<code>numpy array</code></dt>
+<dd>A 1D numpy array for a healpix map. Does not support
+multicomponent maps. For polarization input should be
+either E or B mode scalar map. Does not support IQU maps.</dd>
+<dt><strong><code>bands</code></strong> :&ensp;<code>numpy ndarray</code></dt>
+<dd>A 2D numpy array of shape <code>(lmax+1, nbands)</code> conatining
+needlet bands</dd>
+<dt><strong><code>nodegrade</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Sets if all wavelet scale maps have the same nside.
+If True then you can set the common nside for all scales
+with wavelet_nside. If nside not specified, the common
+nside for all scales is set by: <span><span class="MathJax_Preview">\lceil \log_2(\ell_{\rm max}) \rceil </span><script type="math/tex">\lceil \log_2(\ell_{\rm max}) \rceil </script></span>,
+with lmax determined from needlet bands.</dd>
+<dt><strong><code>wavelet_nside</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Nside of wavelet maps at all bands. Default is None.</dd>
+<dt><strong><code>w_nside_min</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Minimum nside for any wavelet scale maps. Default is None.</dd>
+<dt><strong><code>w_nside_max</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Maximum nside for any wavelet scale maps. Default is None.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>When nside is not set by user the nside of each wavelet scale map
+is 2^n such that <code>2^n &gt;= lmax_band</code> (n is integer). The <code>lmax_band</code> is
+obtained by calling get_lmax_band. </p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>A list of healpix maps is returned. There will be nband healpix
+maps as 1D numpy arrays. If all maps are not set to have the same
+nside, do not convert the whole list of maps to a numpy ndarray.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.read_waveletbands_fits"><code class="name flex">
+<span>def <span class="ident">read_waveletbands_fits</span></span>(<span>infile)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reads needlet band information contained in PrimaryHDU of a fits file created with
+write_waveletmap_fits.</p>
+<h2 id="paramaters">Paramaters</h2>
+<p>infile : str
+Input filename, with path, to read the needlet bands from a fits file.
+Only valid file extension is fits. Must be created with write_waveletmap_fits.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>numpy ndarray</code></dt>
+<dd>A 2D numpy array of shape <code>(lmax+1, nbands)</code> conatining needlet bands
+used to produce the wavelet scale maps contained in the file.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.read_waveletmap_fits"><code class="name flex">
+<span>def <span class="ident">read_waveletmap_fits</span></span>(<span>infile, band_no=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reads wavelet map(s) contained in the BintableHDU of a fits file created with
+write_waveletmap_fits. </p>
+<h2 id="paramaters">Paramaters</h2>
+<p>infile : str
+Input filename, with path, to read the wavelet scale maps from a fits file.
+Only valid file extension is fits. Must be created with write_waveletmap_fits.
+band_no : int, optional
+Specifies the wavelet scale map to fetch by number. Goes from 1 to nbands.
+Default is None.
+Returns</p>
+<hr>
+<dl>
+<dt><code>list</code> or <code>numpy array</code></dt>
+<dd>If band_no is set to None, returns a list of healpix maps. One map for each
+wavelet band. Each healpix map is a numpy 1D array. If band_no is specified,
+returns the healpix map as a numpy 1D array.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.wavelet2alm"><code class="name flex">
+<span>def <span class="ident">wavelet2alm</span></span>(<span>wvlt_map_in, bands)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts wavelet maps back to spherical harmonic coefficients (alm).</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>wvlt_map_in</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list of healpix maps. One map for each wavelet band. Each healpix
+map is a numpy 1D array. The nside of the map is determined from the
+length of the map array. Partial maps not supported.</dd>
+<dt><strong><code>bands</code></strong> :&ensp;<code>numpy ndarray</code></dt>
+<dd>A 2D numpy array of shape <code>(lmax+1, nbands)</code> conatining needlet bands
+used to produce the wavelet scale maps. number of maps must match nbands.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>numpy array</code></dt>
+<dd>A numpy 1D array of output spherical harmonic coefficients are returned.
+The alm array is indexed in healpix C/python format. The output alm is
+compatible with healpy SHTs.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.wavelet2map"><code class="name flex">
+<span>def <span class="ident">wavelet2map</span></span>(<span>nside, wvlt_map_in, bands, map_outfile=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts wavelet maps back to single healpix map combining all needlet scales.
+This is a wrapper for wavelet2alm function.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>nside</code></strong> :&ensp;<code>int</code></dt>
+<dd>Healpix nside parameter of the final output map. Sets the pixel density
+of the output map. Valid inputs are integer powers of 2 &lt;= 8192.</dd>
+<dt><strong><code>wvlt_map_in</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list of healpix maps. One map for each wavelet band. Each healpix
+map is a numpy 1D array. The nside of the map is determined from the
+length of the map array. Partial maps not supported.</dd>
+<dt><strong><code>bands</code></strong> :&ensp;<code>numpy ndarray</code></dt>
+<dd>A 2D numpy array of shape <code>(lmax+1, nbands)</code> conatining needlet bands
+used to produce the wavelet scale maps. number of maps must match nbands.</dd>
+<dt><strong><code>map_outfile</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Output filename, with path, to save the output map as fits file. Only
+valid file extension is fits.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>numpy array</code></dt>
+<dd>A numpy 1D array of a healpix map representing the combined information from
+all needlet scales. This map will have the nside set in the input.</dd>
+</dl></div>
+</dd>
+<dt id="cmbframe.wavelet.write_waveletmap_fits"><code class="name flex">
+<span>def <span class="ident">write_waveletmap_fits</span></span>(<span>bands, wvlt_map_in, outfile, unit='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Writes wavelet maps and corresponding needlet band information to a fits file.</p>
+<h2 id="paramaters">Paramaters</h2>
+<p>bands : numpy ndarray
+A 2D numpy array of shape <code>(lmax+1, nbands)</code> conatining needlet bands
+used to produce the wavelet scale maps. Number of maps must match nbands.
+wvlt_map_in : list
+A list of healpix maps. One map for each wavelet band. Each healpix
+map is a numpy 1D array.
+outfile : str
+Output filename, with path, to save the input needlet bands and wavelet maps
+as fits file. Only valid file extension is fits. This file is meant to read
+with read_waveletbands_fits and read_waveletmap_fits.
+unit : str, optional
+Set the units of the output map.</p>
+<h2 id="notes">Notes</h2>
+<p>Saves the needlet bands in the PrimaryHDU of the fits file. Saves the wavelet maps
+as a BinTableHDU with each map as a new column.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="cmbframe" href="index.html">cmbframe</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="cmbframe.wavelet.alm2wavelet" href="#cmbframe.wavelet.alm2wavelet">alm2wavelet</a></code></li>
+<li><code><a title="cmbframe.wavelet.cosine_bands" href="#cmbframe.wavelet.cosine_bands">cosine_bands</a></code></li>
+<li><code><a title="cmbframe.wavelet.gaussian_bands" href="#cmbframe.wavelet.gaussian_bands">gaussian_bands</a></code></li>
+<li><code><a title="cmbframe.wavelet.get_lmax_band" href="#cmbframe.wavelet.get_lmax_band">get_lmax_band</a></code></li>
+<li><code><a title="cmbframe.wavelet.map2wavelet" href="#cmbframe.wavelet.map2wavelet">map2wavelet</a></code></li>
+<li><code><a title="cmbframe.wavelet.read_waveletbands_fits" href="#cmbframe.wavelet.read_waveletbands_fits">read_waveletbands_fits</a></code></li>
+<li><code><a title="cmbframe.wavelet.read_waveletmap_fits" href="#cmbframe.wavelet.read_waveletmap_fits">read_waveletmap_fits</a></code></li>
+<li><code><a title="cmbframe.wavelet.wavelet2alm" href="#cmbframe.wavelet.wavelet2alm">wavelet2alm</a></code></li>
+<li><code><a title="cmbframe.wavelet.wavelet2map" href="#cmbframe.wavelet.wavelet2map">wavelet2map</a></code></li>
+<li><code><a title="cmbframe.wavelet.write_waveletmap_fits" href="#cmbframe.wavelet.write_waveletmap_fits">write_waveletmap_fits</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

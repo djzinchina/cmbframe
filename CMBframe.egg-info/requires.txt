@@ -1,0 +1,7 @@
+numpy
+healpy
+matplotlib
+scipy
+joblib
+pymaster
+tqdm
