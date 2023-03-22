@@ -118,8 +118,8 @@ def calc_binned_cov(alm1, alm2=None):
     Cl_binned = np.zeros((lmax+1,))
 
     for li in range(2, len(Cl_1x2)) :
-        limin = np.maximum(np.int(np.floor(np.minimum(0.8*li, li-5))), 2)
-        limax = np.minimum(np.int(np.ceil(np.maximum(1.2*li, li+5))), lmax-1)
+        limin = np.maximum(np.int(np.floor(np.minimum(0.8*li, li-7))), 2)
+        limax = np.minimum(np.int(np.ceil(np.maximum(1.2*li, li+7))), lmax-1)
         
         Cl_binned[li] = (np.sum(Cl_1x2[limin:limax]) - Cl_1x2[li]) / np.sum(mode_factor[limin:limax]) #(limax - limin) 
 

@@ -207,7 +207,7 @@ class nilc_workspace:
             if cov_method == 'supix':
                 cov = co.supix_covar(map_nus_in_band)
             elif cov_method == 'dgrade':
-                cov = co.dgrade_covar(map_nus_in_band, self.bands[band], ilc_bias=ilc_bias)
+                cov = co.dgrade_covar(map_nus_in_band, self.bands[:,band], ilc_bias=ilc_bias)
             else:
                 print("ERROR: cov_method value is not set to a valid method.")
 
